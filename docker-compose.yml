@@ -1,0 +1,26 @@
+
+version: '3'
+
+services:
+  backend:
+    # This image name should match what your Jenkins pipeline pushes to Docker Hub.
+    # ${DOCKER_USER} will be replaced by your Docker Hub username during deployment.
+    image: ${DOCKER_USER}/my-django-app:latest
+    ports:
+      # Maps host port 8000 to container port 8000
+      - "8000:8000"
+    # If your Django app uses environment variables (e.g., for database connection),
+    # ensure your .env file is in the same directory as this docker-compose.yml
+    env_file:
+      - .env
+
+  frontend:
+    # This image name should match what your Jenkins pipeline pushes to Docker Hub.
+    # ${DOCKER_USER} will be replaced by your Docker Hub username during deployment.
+    image: ${DOCKER_USER}/my-react-app:latest
+    ports:
+      # Maps host port 3000 to container port 80.
+      # React apps typically run on port 3000 in development, but often serve
+      # static files via Nginx or similar on port 80 in production containers.
+      # Ensure your frontend Dockerfile exposes port 80 and serves the app correctly.
+      - "3000:80"
