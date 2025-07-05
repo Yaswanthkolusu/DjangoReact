@@ -1,0 +1,8 @@
+Django~=4.2.0
+djangorestframework~=3.14.0
+# Add any other Python packages your Django project depends on
+# Example for database drivers (choose one based on your database):
+psycopg2-binary # For PostgreSQL
+mysqlclient     # For MySQL
+Pillow          # If you handle images
+djangorestframework-simplejwt # If you use JWT for authentication
